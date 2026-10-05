@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Primeiro Extrato</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF3EA;--panel:#FFFFFF;--panel2:#F4F8F0;--line:#CFD9CC;--ink:#0F1A13;--mute:#55665B;--acc:#356300;--lime:#C8F250;--on-lime:#0B120E;--green:#1F8A4C;--red:#C4343F;--redbg:#FBE4E4;
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A110D;--panel:#0F1813;--panel2:#141F19;--line:#223029;--ink:#EEF3EC;--mute:#8FA197;--acc:#C8F250;--redbg:#3A1519}}
+:root[data-theme="dark"]{--bg:#0A110D;--panel:#0F1813;--panel2:#141F19;--line:#223029;--ink:#EEF3EC;--mute:#8FA197;--acc:#C8F250;--redbg:#3A1519}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter Tight",system-ui,sans-serif;line-height:1.5;
+ background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:48px 48px;background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;background:var(--bg);opacity:.9;z-index:-1}
+h1,h2,.an{font-family:Anton,"Inter Tight",sans-serif;font-weight:400;text-transform:uppercase;line-height:1.05;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(2.2rem,7vw,3.4rem)}h2{font-size:1.7rem}
+h3{margin:0;font-size:1.2rem;font-weight:700;letter-spacing:-.01em}
+p{margin:.5rem 0}
+.lb{font-family:"Space Mono",monospace;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.lb.a{color:var(--acc)}.mute{color:var(--mute)}.sm{font-size:.88rem}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.wrap{max-width:82rem;margin:0 auto;padding:1rem}
+.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+.logo{font-family:Anton,sans-serif;font-size:1.3rem;text-transform:uppercase}.logo span{color:var(--acc)}
+.grid{display:grid;gap:1rem;grid-template-columns:1fr}
+@media (min-width:62rem){.grid{grid-template-columns:17rem minmax(0,1fr) 19rem;align-items:start}}
+.pn{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1rem}
+.btn{background:var(--lime);color:var(--on-lime);border:0;border-radius:6px;padding:.75rem 1.1rem;font-weight:700;min-height:44px}
+.btn.gh{background:transparent;color:var(--ink);border:1px solid var(--line);font-family:"Space Mono",monospace;font-size:.82rem}
+.btn[disabled]{opacity:.4;cursor:not-allowed}.btn.w{width:100%}
+/* ficha */
+.ovr{display:flex;gap:.8rem;align-items:center}
+.ovr .n{background:linear-gradient(160deg,#F2F4F0,#C9D0C8);color:#111;border-radius:10px;width:5.2rem;height:6.2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none}
+.ovr .n b{font-family:Anton,sans-serif;font-size:2.6rem;line-height:1;font-weight:400}
+.ovr .n span{font-family:"Space Mono",monospace;font-size:.6rem;letter-spacing:.14em;color:#555}
+.st{display:grid;grid-template-columns:1fr 1fr;gap:.1rem .8rem;margin-top:.9rem;border-top:1px solid var(--line);padding-top:.7rem}
+.st div{padding:.25rem 0}.st b{display:block;font-family:"Space Mono",monospace;font-size:1rem}
+.neg{color:var(--red)}
+.meter{height:6px;background:var(--line);border-radius:9px;overflow:hidden;margin:.35rem 0}.meter i{display:block;height:100%;background:var(--lime)}
+/* carta */
+.cena{height:9.5rem;border-radius:8px 8px 0 0;display:flex;align-items:center;justify-content:center;font-size:4.5rem;
+ background:radial-gradient(ellipse at 50% 120%,#2E7D4F 0%,#123524 45%,#0B1711 100%);position:relative;overflow:hidden}
+.cena::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 46px,rgba(255,255,255,.04) 46px 47px)}
+.carta{border:1px solid var(--line);border-radius:8px;background:var(--panel2);overflow:hidden}
+.carta .tx{padding:1rem}
+.rod{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:.1rem .4rem;margin-right:.5rem}
+.conc{border-left:3px solid var(--lime);background:var(--panel);padding:.6rem .8rem;margin:.8rem 0;border-radius:0 6px 6px 0}
+.op{display:flex;width:100%;align-items:center;gap:.8rem;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:.85rem 1rem;min-height:60px}
+.op:hover{background:var(--panel)}
+.op .t{flex:1;min-width:0}.op .t b{display:block}.op .t span{font-size:.8rem;color:var(--mute)}
+.bar{display:flex;width:8.5rem;height:1.9rem;border-radius:99px;overflow:hidden;font-family:"Space Mono",monospace;font-size:.72rem;font-weight:700;color:#fff;flex:none}
+.bar i,.bar b{display:flex;align-items:center;justify-content:center;font-style:normal;min-width:0;overflow:hidden}
+.bar i{background:var(--green)}.bar b{background:var(--red)}
+@media (max-width:30rem){.bar{width:6rem}}
+.res{border:1px solid var(--green);background:var(--panel);border-radius:10px;padding:1rem;margin:1rem}
+.res.bad{border-color:var(--red);background:var(--redbg)}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:.7rem 0}
+.chip{font-family:"Space Mono",monospace;font-size:.78rem;border:1px solid var(--line);border-radius:6px;padding:.2rem .5rem;background:var(--panel2)}
+.chip .up{color:var(--green)}.chip .dn{color:var(--red)}
+.cards{display:grid;gap:.7rem;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));margin:1rem 0}
+.pick{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:1rem;text-align:center;min-height:9rem}
+.pick[aria-pressed=true]{border-color:var(--lime);box-shadow:inset 0 0 0 1px var(--lime)}
+.pick .an{font-size:1.25rem;display:block;margin:.5rem 0}
+.ln{display:flex;justify-content:space-between;gap:1rem;padding:.35rem 0;border-top:1px solid var(--line);font-family:"Space Mono",monospace;font-size:.85rem}
+/* linha do tempo */
+.tl{width:100%;border-collapse:collapse;font-size:.85rem}
+.tl th{text-align:left;padding:.3rem .25rem;font-family:"Space Mono",monospace;font-size:.62rem;letter-spacing:.12em;color:var(--mute);text-transform:uppercase}
+.tl td{padding:.5rem .25rem;border-top:1px solid var(--line);vertical-align:top}
+.tl td.m{font-family:"Space Mono",monospace;color:var(--mute)}
+.sc{display:inline-block;min-width:2rem;text-align:center;border-radius:5px;padding:.1rem .3rem;background:#DDE2DB;color:#111;font-family:"Space Mono",monospace;font-weight:700}
+.sc.q{background:#C2501F;color:#fff}
+input[type=text]{font:inherit;color:var(--ink);background:transparent;border:0;border-bottom:2px solid var(--line);padding:.5rem 0;width:100%;max-width:18rem;text-transform:uppercase;font-weight:700}
+.veu{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:9;padding:1rem}
+.veu .pn{max-width:38rem;width:100%;max-height:90%;overflow:auto}
+details{border-top:1px solid var(--line);padding:.6rem 0}summary{font-weight:700;cursor:pointer}
+.termo{background:none;border:0;padding:0;color:var(--acc);font-weight:700;text-decoration:underline dotted;text-underline-offset:3px}
+.chipb{font:inherit;font-size:.82rem;background:var(--panel2);border:1px solid var(--line);border-radius:99px;padding:.3rem .7rem;color:var(--acc);font-weight:600;min-height:34px}
+.mlist{display:flex;flex-wrap:wrap;gap:.35rem}
+.ovr button.n{border:0;cursor:pointer}
+.op{min-height:54px}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="top"><div class="logo">Primeiro <span>Extrato</span></div><div id="nav"></div></div><div id="app"></div></div>
+<div id="pop"></div>
+<script>
+/* ============ 1. CONTEUDO ============ */
+const GLOSS = {
+ orcamento:{t:'Orçamento',d:'Plano que mostra quanto entra, quanto sai e quanto sobra no mês.',e:'Entram R$ 1.300. Saem R$ 680 de contas. Sobram R$ 620 para dividir entre lazer, reserva e objetivo.'},
+ liquido:{t:'Renda bruta e renda líquida',d:'Bruta é o valor combinado. Líquida é o que cai na conta depois dos descontos, como INSS e vale-transporte.',e:'Salário bruto de R$ 1.621. Com 7,5% de INSS e 6% de vale-transporte, chegam cerca de R$ 1.400.'},
+ fixa:{t:'Despesa fixa',d:'Gasto que se repete todo mês com valor parecido e que não dá para cortar de uma hora para outra.',e:'Plano de celular, alimentação e ajuda em casa.'},
+ variavel:{t:'Despesa variável',d:'Gasto que muda conforme as suas escolhas no mês.',e:'Cinema, delivery e roupa nova. Em um mês você gasta R$ 200, no outro nada.'},
+ recorrente:{t:'Custo recorrente',d:'Compra que vira cobrança mensal até ser cancelada.',e:'Uma assinatura de R$ 35 parece pouco, mas custa R$ 420 por ano.'},
+ cheque:{t:'Cheque especial',d:'Empréstimo automático que o banco concede quando a conta fica negativa. É um dos créditos mais caros do país. Os juros são limitados por norma do Banco Central a 8% ao mês.',e:'Dever R$ 500 por 1 mês custa R$ 40 de juros. Em 12 meses sem pagar, a dívida passa de R$ 1.250.'},
+ inflacao:{t:'Inflação (IPCA)',d:'Aumento geral dos preços. O IPCA, calculado pelo IBGE, é o índice oficial do Brasil.',e:'Com inflação de 4,5% ao ano, o que custa R$ 1.000 hoje custará R$ 1.045 daqui a 12 meses.'},
+ poder:{t:'Poder de compra',d:'Quanto o seu dinheiro consegue comprar. Dinheiro parado perde poder de compra quando os preços sobem.',e:'R$ 2.200 compram o celular hoje. Se o preço subir para R$ 2.290, os mesmos R$ 2.200 já não bastam.'},
+ reserva:{t:'Reserva de emergência',d:'Dinheiro separado para imprevistos, guardado onde possa ser sacado a qualquer momento. A referência usual é de 3 a 6 meses de despesas.',e:'A tela do celular quebra e o conserto custa R$ 350. Com reserva, é um aborrecimento. Sem reserva, vira dívida.'},
+ compostos:{t:'Juros compostos',d:'Juros calculados sobre o valor inicial somado aos juros já acumulados. Trabalham a seu favor quando você investe e contra você quando deve.',e:'R$ 1.000 a 1% ao mês viram R$ 1.010, depois R$ 1.020,10, depois R$ 1.030,30. Em 12 meses, R$ 1.126,83.'},
+ poupanca:{t:'Poupança',d:'Aplicação mais simples do país. Com a Selic acima de 8,5% ao ano, rende 0,5% ao mês mais a TR, uma taxa pequena. Não paga imposto de renda e pode ser sacada quando quiser. Na vida real, só rende na data de aniversário de cada depósito.',e:'R$ 1.000 na poupança rendem cerca de R$ 6,50 em 1 mês.'},
+ selic:{t:'Taxa Selic',d:'Taxa básica de juros da economia. É definida pelo Copom, comitê do Banco Central, que se reúne 8 vezes por ano. Serve de referência para empréstimos e investimentos.',e:'Com a Selic a 14% ao ano, um investimento que a acompanha rende perto de 1,1% ao mês antes do imposto.'},
+ cdi:{t:'CDI',d:'Taxa dos empréstimos de curtíssimo prazo entre bancos. Anda colada na Selic e é a régua usada para medir a renda fixa.',e:'Um CDB de 110% do CDI paga 10% a mais que essa taxa.'},
+ rendafixa:{t:'Renda fixa',d:'Investimento em que você empresta dinheiro ao governo ou a um banco e conhece a regra de rendimento desde o início.',e:'Tesouro Selic, CDB e poupança são renda fixa.'},
+ tesouro:{t:'Tesouro Selic',d:'Título público que rende conforme a Selic. Você empresta ao governo federal, o menor risco de crédito do país, e pode resgatar em qualquer dia útil. Paga imposto de renda sobre o rendimento. A taxa de custódia da B3, de 0,20% ao ano, é isenta até R$ 10 mil investidos.',e:'R$ 1.000 aplicados com a Selic a 14% ao ano rendem cerca de R$ 11 no primeiro mês, antes do imposto.'},
+ liquidez:{t:'Liquidez',d:'Facilidade de transformar o investimento em dinheiro na conta sem perder valor.',e:'Tesouro Selic tem liquidez alta. Um CDB que só paga no vencimento, daqui a 12 meses, tem liquidez baixa.'},
+ irreg:{t:'Imposto de renda regressivo',d:'Na renda fixa, o imposto incide só sobre o rendimento e diminui com o tempo. São 22,5% até 180 dias, 20% de 181 a 360 dias, 17,5% de 361 a 720 dias e 15% acima de 720 dias.',e:'Um investimento rendeu R$ 100 em 4 meses. O imposto é de R$ 22,50 e o ganho líquido é de R$ 77,50.'},
+ cdb:{t:'CDB',d:'Certificado de Depósito Bancário. Você empresta dinheiro a um banco. Bancos menores e prazos mais longos costumam pagar mais.',e:'Um CDB de 110% do CDI com vencimento em 12 meses rende mais que o Tesouro Selic, mas o dinheiro fica preso até lá.'},
+ fgc:{t:'FGC',d:'Fundo Garantidor de Créditos. Devolve até R$ 250 mil por CPF e por instituição se o banco quebrar. Cobre poupança e CDB. Não cobre ações. O Tesouro Direto não precisa dele porque é garantido pelo próprio governo.',e:'Você tem R$ 3.000 em um CDB e o banco quebra. O FGC devolve o valor.'},
+ iof:{t:'IOF',d:'Imposto cobrado sobre o rendimento de quem resgata renda fixa em menos de 30 dias. Começa alto e chega a zero no 30.º dia. No jogo, cada rodada dura 1 mês, então ele não aparece.',e:'Aplicou hoje e resgatou em 10 dias. Boa parte do pequeno rendimento fica com o IOF.'},
+ real:{t:'Rentabilidade real',d:'Quanto o investimento rendeu acima da inflação.',e:'O investimento rendeu 11% líquidos no ano e a inflação foi de 4,5%. O ganho real foi de cerca de 6,2%.'},
+ acao:{t:'Ação',d:'Pequena parte de uma empresa. Quem compra vira sócio e ganha ou perde conforme o preço da ação e os lucros da empresa.',e:'Você compra 10 ações a R$ 24. Se o preço for a R$ 27, seus R$ 240 viram R$ 270. Se cair a R$ 20, viram R$ 200.'},
+ bolsa:{t:'Bolsa de valores (B3)',d:'Ambiente onde ações são compradas e vendidas. No Brasil é a B3. O acesso é feito por uma corretora. Muitas não cobram corretagem, mas a B3 cobra taxas de cerca de 0,03% por operação.',e:'Em uma compra de R$ 500 em ações, as taxas da B3 somam cerca de R$ 0,15.'},
+ risco:{t:'Risco e retorno',d:'Quanto maior o retorno possível, maior a chance de perda. Não existe retorno alto garantido.',e:'A empresa de energia oscila pouco e rende pouco. A de tecnologia pode subir 30% em um mês e cair 30% no seguinte.'},
+ volat:{t:'Volatilidade',d:'O tamanho do sobe e desce do preço de um investimento.',e:'Uma ação que varia entre −3% e +4% ao mês é pouco volátil. Uma que varia entre −25% e +30% é muito volátil.'},
+ divers:{t:'Diversificação',d:'Dividir o dinheiro entre investimentos diferentes para que a queda de um não derrube tudo.',e:'Quem tem só varejo sofre quando os juros sobem. Quem também tem energia e banco sente menos.'},
+ divid:{t:'Dividendos',d:'Parte do lucro que a empresa distribui aos sócios. Para valores como os do jogo, são isentos de imposto de renda.',e:'Você tem R$ 1.000 em ações de uma empresa que distribui 0,5% ao mês. Caem R$ 5 na conta.'},
+ iracoes:{t:'Imposto de renda sobre ações',d:'Quem vende até R$ 20 mil em ações no mês não paga imposto sobre o lucro. Acima disso, paga 15% sobre o lucro. Compra e venda no mesmo dia pagam 20%, sem isenção.',e:'Você vendeu R$ 900 em ações com R$ 120 de lucro. Como ficou abaixo de R$ 20 mil no mês, o lucro é isento.'},
+ golpe:{t:'Pirâmide e ganho garantido',d:'Esquema que paga os primeiros participantes com o dinheiro dos novos, até quebrar. Os sinais de alerta são retorno alto, garantido e com pressa para entrar.',e:'10% ao mês equivalem a 214% ao ano. A Selic, referência de ganho seguro, fica perto de 14% ao ano.'},
+ impulso:{t:'Compra por impulso',d:'Compra decidida na emoção, fora do orçamento. Desconto só é economia quando a compra já estava nos planos.',e:'Um tênis de R$ 560 por R$ 280. Se você não ia comprar, não economizou R$ 280. Gastou R$ 280.'}
+};
+GLOSS.rotativo={t:'Rotativo do cartão',d:'Crédito automático de quem não paga a fatura inteira. Está entre os juros mais altos do país, com frequência acima de 10% ao mês. Desde 2024, o total de juros e encargos não pode passar de 100% da dívida original.',e:'Fatura de R$ 400. Você paga R$ 60 e os R$ 340 restantes voltam no mês seguinte com juros.'};
+const PERFIS=[{id:'aprendiz',nome:'Jovem aprendiz',renda:850,contas:560,d:'Meio período, transporte pago'},{id:'estagio',nome:'Estágio',renda:1300,contas:880,d:'Bolsa com auxílio-transporte'},{id:'clt',nome:'Primeiro emprego',renda:1400,contas:950,d:'Salário mínimo, já com descontos'}];
+const OBJ=[{id:'celular',nome:'Celular novo',v:1800,d:'Carreira curta'},{id:'viagem',nome:'Viagem com amigos',v:2800,d:'Carreira média'},{id:'setup',nome:'Setup de estudos',v:3600,d:'Notebook, cadeira e fone'},{id:'moto',nome:'Moto usada',v:7500,d:'Carreira longa'}];
+const NIVEIS=[[80,'Lenda'],[70,'Craque'],[60,'Destaque'],[50,'Titular'],[0,'Promessa']];
+const REF={cheque:.08,reserva:.0085,max:3};
+let S=null;
+const pagar=v=>{S.conta-=v;if(S.conta<0&&S.reserva>0){const x=Math.min(S.reserva,-S.conta);S.reserva-=x;S.conta+=x;S.cob+=x;}};
+const investir=(v,f)=>{v=Math.min(v,Math.max(0,S.conta)+S.reserva);pagar(v);S.acoes+=v*f;};
+const bem=v=>{S.bem=Math.max(0,Math.min(100,S.bem+v));};
+const CARTAS={
+ orc:{m:[0],mais:[],e:'💸',tag:'Dia de pagamento',t:'Caiu o primeiro pagamento',termo:'orcamento',x:()=>'O valor apareceu no aplicativo do banco. O grupo já combina o fim de semana e você nem sabe quanto das contas vence este mês.',
+  li:'Orçamento é decidir antes para onde o dinheiro vai. Sem ele, quem decide são os pequenos gastos.',
+  ops:[{r:'Anotar as contas e fixar um teto de lazer de R$ 100',p:100,ok(){pagar(100);bem(12);return 'Você separou as contas e reservou R$ 100 para lazer. O resto ficou livre para o objetivo.';}},
+   {r:'Gastar e conferir no fim do mês',p:40,ok(){pagar(120);bem(12);return 'Deu sorte. Gastou pouco, mas sem saber por quê.';},bad(){pagar(320);bem(12);return 'Lanche, corrida de aplicativo, uma camiseta. Pequenos gastos somaram R$ 320 sem você perceber.';}},
+   {r:'Não gastar com nada',p:100,ok(){bem(-10);return 'Você guardou tudo e o bem-estar caiu. Orçamento sem lazer raramente dura.';}}]},
+ inf:{m:[0],mais:['poder', 'tesouro', 'reserva'],e:'🏷️',tag:'Vitrine',t:'O preço subiu',termo:'inflacao',x:()=>'Você passou na loja e o seu objetivo está mais caro que no mês passado. O dinheiro guardado na conta continua igual.',
+  li:'Conta corrente não rende. Com inflação, dinheiro parado perde poder de compra. A partir de agora você pode mandar a sobra para a reserva, no Tesouro Selic.',
+  pre(){S.lib.r=true;},
+  ops:[{r:'Passar o saldo da conta para a reserva, no Tesouro Selic',p:100,ok(){const v=Math.max(0,S.conta);S.conta-=v;S.reserva+=v;return brl(v)+' saíram da conta e foram para a reserva. O dinheiro passa a render cerca de 0,85% ao mês, já descontado o imposto, e pode ser sacado em 1 dia útil.';}},
+   {r:'Deixar na conta, é mais prático',p:100,ok(){return 'Prático, mas todo mês o objetivo fica um pouco mais longe.';}},
+   {r:'Comprar algo menor, de R$ 200, antes que suba',p:100,ok(){pagar(200);bem(10);return 'Inflação não é motivo para gastar. É motivo para fazer o dinheiro render.';}}]},
+ tela:{m:[0],mais:['cheque'],e:'📱',tag:'Imprevisto',t:'A tela do celular quebrou',termo:'reserva',x:()=>'Caiu na saída do ônibus. Sem celular não dá para trabalhar nem estudar. O conserto autorizado custa R$ 350.',
+  li:'Imprevisto não avisa. Com reserva, é um aborrecimento. Sem reserva, vira dívida a 8% ao mês.',
+  ops:[{r:'Pagar o conserto autorizado, de R$ 350',p:100,ok(){pagar(350);return S.conta>=0?'Resolvido. O que você tinha guardado cobriu a despesa.':'Resolvido, mas a conta ficou negativa.';}},
+   {r:'Conserto barato por R$ 180, sem garantia',p:55,ok(){pagar(180);return 'Funcionou e você economizou R$ 170.';},bad(){pagar(530);return 'A tela falhou em 2 semanas. Você pagou R$ 180 e depois os R$ 350.';}},
+   {r:'Ficar sem celular este mês',p:30,ok(){return 'Você se virou com um aparelho emprestado.';},bad(){pagar(550);return 'Você perdeu um trabalho extra de R$ 200 por não responder a tempo e teve de consertar mesmo assim.';}}]},
+ golpe:{m:[1, 2],mais:['risco'],e:'📈',tag:'Grupo de mensagens',t:'10% ao mês, garantidos',termo:'golpe',x:()=>'Um colega te adicionou a um grupo. Um "consultor" promete 10% ao mês para quem depositar ainda hoje. Vários prints mostram gente recebendo.',
+  li:'10% ao mês são 214% ao ano. A Selic, referência de ganho seguro, está perto de 14% ao ano. Retorno alto, garantido e com pressa é o retrato de um golpe.',
+  ops:[{r:'Entrar com R$ 300',p:8,ok(){S.conta+=30;return 'Você recebeu R$ 30 e sacou a tempo. Foi sorte. Pirâmides pagam os primeiros para atrair os próximos.';},bad(){pagar(300);S.golpe+=300;return 'O grupo foi apagado na semana seguinte. O dinheiro sumiu.';}},
+   {r:'Pesquisar a empresa na CVM',p:100,ok(){S.sab++;return 'Nenhum registro na CVM nem no Banco Central. Quem capta investimento sem autorização está fora da lei.';}},
+   {r:'Ignorar e sair do grupo',p:100,ok(){return 'Decisão certa. Os prints são a isca.';}}]},
+ cdb:{m:[1, 2],mais:['cdb', 'cdi', 'fgc'],e:'🔒',tag:'Aplicativo do banco',t:'Uma taxa maior, com uma condição',termo:'liquidez',x:()=>'O banco oferece um CDB de 110% do CDI. Rende mais que o Tesouro Selic, mas o dinheiro fica preso por 12 meses. Você tem '+brl(S.reserva)+' na reserva, com saque imediato.',
+  li:'Rentabilidade, liquidez e segurança raramente vêm juntas. A reserva de emergência precisa de saque imediato. Só o dinheiro que não fará falta por 12 meses deve ir para um investimento travado.',
+  ops:[{r:'Aplicar a reserva inteira no CDB',p:100,ok(){return paraCdb(1);}},{r:'Aplicar metade no CDB e manter metade com saque imediato',p:100,ok(){return paraCdb(.5);}},{r:'Não aplicar e manter tudo com saque imediato',p:100,ok(){return 'Nada mudou. Sua reserva continua disponível para imprevistos, rendendo um pouco menos que o CDB.';}}]},
+ bolsa:{m:[1, 2],mais:['acao', 'bolsa', 'divers', 'volat'],e:'🏛️',tag:'Corretora',t:'Estreia na bolsa',termo:'risco',x:()=>'Conta aberta na corretora. Você separou '+brl(S.tmp)+' para comprar as primeiras ações.',
+  li:'Ações podem render mais que a renda fixa, mas oscilam. Servem para dinheiro que pode esperar, depois da reserva. A partir de agora você pode mandar a sobra para ações.',
+  pre(){S.lib.a=true;S.tmp=Math.max(100,Math.round(.3*(Math.max(0,S.conta)+S.reserva)));},
+  ops:[{r:'Tudo na empresa de tecnologia da moda',p:45,ok(){investir(S.tmp,1.25);return 'A ação subiu 25%. Lembre que o mesmo risco valia para o outro lado.';},bad(){investir(S.tmp,.7);return 'A empresa perdeu um contrato e a ação caiu 30%.';}},
+   {r:'Dividir entre energia, banco e agro',p:62,ok(){investir(S.tmp,1.06);return 'A carteira subiu 6%. Sem emoção, que é o que se espera de diversificação.';},bad(){investir(S.tmp,.95);return 'A carteira caiu 5%. Uma empresa foi mal e as outras seguraram.';}},
+   {r:'Ainda não. Primeiro a reserva',p:100,ok(){return 'Ordem correta. Reserva vem antes de risco.';}}]},
+ queda:{m:[1],mais:['acao'],e:'📉',tag:'Mercado',t:'A bolsa caiu 12% na semana',termo:'volat',cond:()=>S.acoes>50,x:()=>'Suas ações agora valem '+brl(S.acoes)+'. As redes sociais só falam em crise.',
+  li:'Queda só vira prejuízo quando você vende. Quem investiu dinheiro que não precisa tão cedo pode esperar.',
+  pre(){S.acoes*=.88;},
+  ops:[{r:'Vender tudo para parar de perder',p:100,ok(){S.conta+=S.acoes;S.acoes=0;return 'Você transformou uma oscilação em perda real.';}},
+   {r:'Não mexer',p:65,ok(){S.acoes/=.88;return 'Em poucas semanas o preço voltou ao que era.';},bad(){S.acoes*=.93;return 'Caiu mais 7%. Ainda é oscilação, não prejuízo.';}},
+   {r:'Comprar mais com o saldo da conta',p:55,ok(){const v=Math.max(0,S.conta);S.conta-=v;S.acoes=(S.acoes+v)*1.14;return 'Você comprou em baixa e a recuperação valeu sobre um valor maior.';},bad(){const v=Math.max(0,S.conta);S.conta-=v;S.acoes=(S.acoes+v)*.93;return 'Caiu mais 7% e agora a conta está zerada. Faltou manter liquidez.';}}]},
+ fatura:{m:[0],mais:['cheque'],e:'💳',tag:'Cartão de crédito',t:'A fatura veio maior que o esperado',termo:'rotativo',x:()=>'Somando as compras parceladas, a fatura fechou em '+brl(S.tmp)+'.',
+  li:'Cartão não é renda extra. Pagar o mínimo empurra o resto para o mês seguinte com os juros mais altos do mercado.',
+  pre(){S.tmp=Math.round(S.renda*.3);},
+  ops:[{r:'Pagar o total',p:100,ok(){pagar(S.tmp);return 'Fatura quitada, sem juros.';}},
+   {r:'Pagar só o mínimo',p:0,bad(){pagar(S.tmp*.15);S.pend+=S.tmp*.85*1.14;return 'O restante entrou no rotativo e volta no próximo mês cerca de 14% maior.';}},
+   {r:'Pagar 20% e parcelar o resto',p:100,ok(){pagar(S.tmp*.2);S.pend+=S.tmp*1.05;return 'Mais barato que o rotativo, mas ainda caro. A cobrança volta no próximo mês.';}}]},
+ promo:{m:[1, 2],mais:[],e:'👟',tag:'Oferta relâmpago',t:'Tênis pela metade do preço, só hoje',termo:'impulso',x:()=>'De R$ 560 por R$ 280. O cronômetro do site mostra 14 minutos.',
+  li:'Desconto só é economia se a compra já estava nos planos. Cronômetro e preço riscado existem para apressar você.',
+  ops:[{r:'Comprar agora por R$ 280',p:100,ok(){pagar(280);bem(10);return 'Você não economizou R$ 280. Gastou R$ 280.';}},
+   {r:'Esperar 24 horas',p:75,ok(){return 'No dia seguinte você nem lembrava do tênis.';},bad(){pagar(320);bem(10);return 'A vontade continuou e a oferta tinha acabado. Você pagou R$ 320.';}},
+   {r:'Fechar o site',p:100,ok(){return 'O objetivo agradece.';}}]},
+ amigo:{m:[1, 2],mais:[],e:'🤝',tag:'Mensagem',t:'Um amigo pede R$ 200 emprestados',termo:'orcamento',x:()=>'Ele promete devolver no mês que vem.',
+  li:'Emprestar faz parte da vida. A regra é emprestar apenas o que não fará falta se não voltar.',
+  ops:[{r:'Emprestar os R$ 200',p:60,ok(){bem(5);return 'Ele devolveu no prazo.';},bad(){pagar(200);return 'Ele parou de responder. O dinheiro não voltou.';}},
+   {r:'Emprestar R$ 50, que não farão falta',p:60,ok(){bem(5);return 'Ele devolveu e agradeceu.';},bad(){pagar(50);return 'Não voltou, mas não comprometeu o seu mês.';}},
+   {r:'Dizer que não pode',p:100,ok(){bem(-5);return 'Dizer não também é uma decisão financeira.';}}]},
+ bico:{m:[0],mais:[],e:'🎪',tag:'Renda extra',t:'Trabalho de fim de semana',termo:'reserva',x:()=>'Um conhecido precisou de ajuda em um evento e pagou R$ 220.',
+  li:'Renda extra não estava no orçamento. Por isso é a melhor candidata a ir direto para a reserva ou para o objetivo.',
+  ops:[{r:'Mandar direto para a reserva',p:100,ok(){S.reserva+=220;return 'O dinheiro nem passou pela conta.';}},
+   {r:'Deixar na conta',p:50,ok(){S.conta+=220;return 'O valor continua na conta.';},bad(){S.conta+=90;return 'Sem destino definido, R$ 130 viraram pequenos gastos.';}},
+   {r:'Comemorar com R$ 150 e guardar R$ 70',p:100,ok(){S.conta+=70;bem(15);return 'Você aproveitou R$ 150 e guardou o resto.';}}]},
+ aumento:{m:[0, 2],mais:['variavel'],e:'📝',tag:'Trabalho',t:'Sua renda subiu 10%',termo:'fixa',once:true,x:()=>'Você foi efetivado em uma função melhor. A partir deste mês, entram '+brl(S.renda*.1)+' a mais.',
+  li:'Quando a renda sobe e o padrão de vida sobe junto, a sobra continua a mesma. Aumentar a despesa fixa é fácil. Reduzir depois é difícil.',
+  ops:[{r:'Manter o padrão e guardar a diferença',p:100,ok(){S.renda*=1.1;return 'Todo o aumento virou sobra mensal.';}},
+   {r:'Subir o padrão de vida',p:100,ok(){S.contas+=S.renda*.1;S.renda*=1.1;bem(12);return 'Plano melhor e delivery fixo. O aumento inteiro virou despesa.';}},
+   {r:'Meio a meio',p:100,ok(){S.contas+=S.renda*.05;S.renda*=1.1;bem(6);return 'Metade virou conforto e metade virou sobra.';}}]},
+ assin:{m:[1, 2],mais:['fixa'],e:'📺',tag:'Assinaturas',t:'Um mês grátis de tudo',termo:'recorrente',once:true,x:()=>'Vídeo, música e academia oferecem o primeiro mês grátis. Depois, a cobrança é automática.',
+  li:'Avalie assinatura pelo custo do ano. R$ 147 por mês são R$ 1.764 em 12 meses.',
+  ops:[{r:'Assinar os 3, por R$ 147 ao mês',p:100,ok(){S.contas+=147;bem(18);return 'Suas contas fixas subiram R$ 147 por mês.';}},
+   {r:'Assinar só a música, por R$ 12 ao mês',p:100,ok(){S.contas+=12;bem(6);return 'Custo pequeno e uso diário.';}},
+   {r:'Dividir um plano com amigos, por R$ 18 ao mês',p:70,ok(){S.contas+=18;bem(12);return 'Cada um paga R$ 18 por mês.';},bad(){S.contas+=35;bem(8);return 'Um amigo parou de pagar e a conta ficou com você.';}}]},
+ festa:{m:[0, 1],mais:['orcamento'],e:'🍕',tag:'Convite',t:'Aniversário de um amigo',termo:'variavel',x:()=>'Rodízio de pizza. Com transporte e presente, a noite sai por R$ 90.',
+  li:'Lazer faz parte de um orçamento saudável. O que importa é caber no mês.',
+  ops:[{r:'Ir e dar presente, por R$ 90',p:100,ok(){pagar(90);bem(14);return 'Noite boa e dentro do que você podia.';}},
+   {r:'Ir sem presente caro, por R$ 45',p:100,ok(){pagar(45);bem(10);return 'Presença vale mais que presente.';}},
+   {r:'Ficar em casa',p:100,ok(){bem(-8);return 'Dizer não sempre costuma terminar em compra por impulso.';}}]},
+ selic:{m:[1, 2],mais:['tesouro', 'risco'],e:'🏦',tag:'Notícia',t:'O Copom cortou a Selic',termo:'selic',cond:()=>S.reserva>300,x:()=>'A taxa caiu 0,25 ponto. Sua reserva vai render um pouco menos e um vídeo diz que "renda fixa morreu".',
+  li:'A reserva existe para proteger, não para render o máximo. Mudança pequena de taxa não justifica trocar segurança por risco.',
+  ops:[{r:'Trocar a reserva inteira por ações',p:45,ok(){S.acoes+=S.reserva*1.08;S.reserva=0;S.lib.a=true;return 'As ações subiram 8%. Mas você ficou sem reserva nenhuma.';},bad(){S.acoes+=S.reserva*.9;S.reserva=0;S.lib.a=true;return 'As ações caíram 10% e você ficou sem reserva.';}},
+   {r:'Manter a reserva onde está',p:100,ok(){return 'Ainda rende acima da inflação, com saque imediato.';}},
+   {r:'Pesquisar um CDB com saque diário que pague mais',p:100,ok(){S.reserva*=1.004;S.sab++;return 'Você achou um CDB de 102% do CDI com liquidez diária e cobertura do FGC.';}}]}
+};
+const FIXAS=['orc','inf','tela','golpe','cdb','bolsa'];
+
+/* ============ 2. MOTOR ============ */
+const brl=v=>(v<-.5?'− ':'')+'R$ '+Math.abs(Math.round(v)).toLocaleString('pt-BR');
+function gauss(){let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+function ver(a){a.forEach(i=>{if(!S.vistos.includes(i))S.vistos.push(i);});}
+const cdbV=()=>S.cdb?S.cdb.v:0,liq=()=>S.conta+S.reserva+S.acoes,pat=()=>liq()+cdbV();
+function paraCdb(f){const v=S.reserva*f;if(v<1)return 'Você não tinha reserva para aplicar. Nada mudou.';S.reserva-=v;S.cdb={v,m:0};
+ return brl(v)+' saíram da reserva e foram para o CDB. Esse valor rende cerca de 0,96% ao mês, já com imposto, contra 0,85% da reserva, e só volta daqui a 12 meses. '+(f===1?'Sua reserva com saque imediato ficou em zero. Se surgir um imprevisto, a conta vai para o cheque especial.':'Você ainda tem '+brl(S.reserva)+' com saque imediato para imprevistos.');}
+function comp(){const meses=S.reserva/S.contas,div=Math.max(0,-S.conta);
+ return [['Ponto de partida',46,'Toda carreira começa com 46 pontos.'],
+ ['Reserva de emergência',Math.min(20,meses*20/3),'Até 20 pontos. O máximo vem com 3 meses de contas fixas guardados com saque imediato. Você tem o equivalente a '+meses.toFixed(1).replace('.',',')+'.'],
+ ['Investimentos',S.acoes+cdbV()>0?(meses>=1?9:4):0,'9 pontos para quem investe tendo ao menos 1 mês de reserva. Sem essa reserva, só 4.'],
+ ['Bem-estar',S.bem/10,'Até 10 pontos. Cai quando falta lazer.'],
+ ['Conhecimento',Math.min(10,(S.vistos.length+S.sab)/2),'Até 10 pontos, conforme os conceitos que já apareceram.'],
+ ['Progresso do objetivo',Math.min(6,Math.max(0,pat())/S.obj.v*6),'Até 6 pontos, conforme o quanto do preço você já tem.'],
+ ['Dívida',-(Math.min(30,div/S.renda*30)+S.vermelho*5),'Tira até 30 pontos conforme o tamanho da conta negativa, mais 5 por mês seguido no vermelho.']];}
+const score=()=>Math.round(Math.max(30,Math.min(99,comp().reduce((a,c)=>a+c[1],0))));
+const nivel=s=>NIVEIS.find(n=>s>=n[0])[1];
+const snap=()=>({Conta:S.conta,Reserva:S.reserva,CDB:cdbV(),'Ações':S.acoes,'Bem-estar':S.bem,'Contas fixas':S.contas,Renda:S.renda});
+const abrirMes=()=>{S.log=[['Renda do mês',S.renda],['Contas fixas',-S.contas]];S.mv=[];S.lazer=false;S.dest=null;};
+function novo(nome,p,o){p=PERFIS.find(x=>x.id===p);o=OBJ.find(x=>x.id===o);
+ S={v:3,nome:nome||'Você',perfil:p.nome,renda:p.renda,contas:p.contas,obj:{n:o.nome,v:o.v,v0:o.v},mes:1,conta:p.renda-p.contas,reserva:0,acoes:0,cdb:null,bem:70,vermelho:0,pend:0,sab:0,golpe:0,juros:0,rend:0,cob:0,vistos:[],usadas:[],lib:{r:false,a:false},hist:[],fase:'carta',carta:null,res:null,fech:null,fim:null,tmp:0};
+ abrirMes();puxar();}
+function puxar(){let id=FIXAS[S.mes-1];
+ const livres=()=>Object.keys(CARTAS).filter(k=>!FIXAS.includes(k)&&!S.usadas.includes(k)&&(!CARTAS[k].cond||CARTAS[k].cond()));
+ if(!id){let pool=livres();if(!pool.length){S.usadas=S.usadas.filter(k=>CARTAS[k].once);pool=livres();}id=pool[Math.floor(Math.random()*pool.length)];}
+ const c=CARTAS[id];S.usadas.push(id);S.carta=id;S.fase='carta';S.res=null;S.novoTermo=!S.vistos.includes(c.termo);if(c.pre)c.pre();ver([c.termo,...c.mais]);}
+function decidir(i){const c=CARTAS[S.carta],o=c.ops[i],a=snap(),s0=score(),p0=pat();S.cob=0;const ok=Math.random()*100<o.p;let txt=(ok?o.ok:o.bad)();
+ if(S.cob>0)txt+=' Faltou dinheiro na conta e a reserva cobriu '+brl(S.cob)+' automaticamente.';
+ const b=snap(),d=[];Object.keys(a).forEach(k=>{const x=Math.round(b[k]-a[k]);if(x)d.push([k,x]);});const s1=score();if(s1!==s0)d.push(['Saúde financeira',s1-s0]);
+ if(Math.abs(pat()-p0)>=1)S.log.push(['Decisão do mês',pat()-p0]);
+ S.res={i,r:o.r,ok,sorte:o.p>0&&o.p<100,txt,d};S.fase='res';}
+function fecharMes(){const L=S.log,lz=Math.round(S.renda*.08);
+ if(S.lazer&&S.conta>=lz){S.conta-=lz;bem(18);L.push(['Lazer',-lz]);}
+ const v=Math.max(0,S.conta),k=S.dest;
+ if(k==='v'){S.mv.push(['Venda das ações, para a conta',S.acoes]);S.conta+=S.acoes;S.acoes=0;}
+ else if(v>0&&k==='r'){S.conta-=v;S.reserva+=v;S.mv.push(['Da conta para a reserva',v]);}
+ else if(v>0&&k==='a'){S.conta-=v;S.acoes+=v;S.mv.push(['Da conta para ações',v]);}
+ else if(v>0&&k==='m'){S.conta-=v;S.reserva+=v/2;S.acoes+=v/2;S.mv.push(['Da conta para a reserva',v/2],['Da conta para ações',v/2]);}
+ if(S.pend>0){S.cob=0;pagar(S.pend);L.push(['Cobrança do cartão',-S.pend]);S.pend=0;}
+ if(S.conta<0){const j=-S.conta*REF.cheque;S.conta-=j;S.juros+=j;L.push(['Juros do cheque especial, 8% ao mês',-j]);}
+ if(S.reserva>0){const g=S.reserva*REF.reserva;S.reserva+=g;S.rend+=g;L.push(['Rendimento da reserva, já com imposto',g]);}
+ if(S.cdb){const g=S.cdb.v*.0096;S.cdb.v+=g;S.cdb.m++;S.rend+=g;L.push(['Rendimento do CDB, já com imposto',g]);if(S.cdb.m>=12){S.mv.push(['CDB venceu e voltou para a reserva',S.cdb.v]);S.reserva+=S.cdb.v;S.cdb=null;}}
+ if(S.acoes>0){const g=S.acoes*Math.max(-.3,Math.min(.35,.009+.06*gauss()));S.acoes+=g;S.rend+=g;L.push(['Variação das ações no mês',g]);}
+ bem(-10);if(S.bem<20){const x=S.renda*.15;pagar(x);bem(25);L.push(['Compra por impulso, por falta de lazer',-x]);}
+ const ip=.002+Math.random()*.0035,sub=S.obj.v*ip;S.obj.v+=sub;
+ S.vermelho=S.conta<0?S.vermelho+1:0;
+ S.hist.push({m:S.mes,id:S.carta,i:S.res.i,t:CARTAS[S.carta].t,ok:S.res.ok,sorte:S.res.sorte,s:score(),p:pat()});
+ S.fech={m:S.mes,L,mv:S.mv,sub};S.fase='fech';if(S.vermelho>=REF.max)S.fim='derrota';}
+function proximo(){if(S.fim){S.fase='fim';return;}S.mes++;S.conta+=S.renda-S.contas;abrirMes();puxar();}
+function comprar(){const v=S.obj.v;if(liq()<v)return;S.conta-=v;if(S.conta<0){const x=Math.min(S.reserva,-S.conta);S.reserva-=x;S.conta+=x;}if(S.conta<0){S.acoes+=S.conta;S.conta=0;}S.fim='vitoria';S.fase='fim';}
+
+/* ============ 3. INTERFACE ============ */
+const UI={p:null,o:null,nome:''};const K='primeiro-extrato-v3';
+const el=i=>document.getElementById(i);
+const salvar=()=>{try{localStorage.setItem(K,JSON.stringify(S));}catch(e){}};
+const T=(id,r)=>'<button class="termo" data-a="termo" data-k="'+id+'">'+r+'</button>';
+const I=id=>'<button class="chipb" data-a="termo" data-k="'+id+'">ⓘ '+GLOSS[id].t+'</button>';
+const ln=(a,b,n)=>'<div class="ln"><span>'+a+'</span><b class="'+(!n&&b<-.5?'neg':'')+'">'+(typeof b==='number'?(b>.5&&!n?'+ ':'')+brl(b):b)+'</b></div>';
+function ficha(){const s=score(),pr=Math.max(0,Math.min(100,pat()/S.obj.v*100)),pode=liq()>=S.obj.v&&!S.fim,prox=NIVEIS.slice().reverse().find(n=>n[0]>s);
+ let h='<aside class="pn"><div class="ovr"><button class="n" data-a="saude" aria-label="Saúde financeira '+s+'. Ver como é calculada"><span>SAÚDE</span><b>'+s+'</b></button><div><span class="lb a">'+nivel(s)+'</span><h3>'+S.nome+'</h3><span class="sm mute">'+S.perfil+'</span></div></div>'+
+ '<p class="sm mute" style="margin:.6rem 0 0">Saúde financeira é a nota de 30 a 99 da sua situação. '+(prox?'Faltam '+(prox[0]-s)+' pontos para '+prox[1]+'. ':'')+'</p><button class="chipb" data-a="saude">ⓘ Ver como a nota é calculada</button>'+
+ '<div class="st"><div><span class="lb">Conta</span><b class="'+(S.conta<0?'neg':'')+'">'+brl(S.conta)+'</b></div><div><span class="lb">Reserva</span><b>'+brl(S.reserva)+'</b></div><div><span class="lb">Ações</span><b>'+brl(S.acoes)+'</b></div>'+(S.cdb?'<div><span class="lb">CDB, preso '+(12-S.cdb.m)+' m</span><b>'+brl(S.cdb.v)+'</b></div>':'<div><span class="lb">Sobra mensal</span><b>'+brl(S.renda-S.contas)+'</b></div>')+'</div>'+
+ '<p class="lb" style="margin-top:.8rem">Bem-estar '+Math.round(S.bem)+' de 100</p><div class="meter"><i style="width:'+S.bem+'%"></i></div><p class="sm mute" style="margin:0">Cai 10 por mês. O lazer repõe. Abaixo de 20, vira compra por impulso.</p>'+
+ (S.vermelho?'<p class="sm neg"><b>'+S.vermelho+' de '+REF.max+' meses no vermelho.</b> No '+REF.max+'.º, a carreira acaba.</p>':'')+
+ '<p class="lb" style="margin-top:.8rem">Objetivo</p><b>'+S.obj.n+'</b> <span class="sm mute">'+brl(S.obj.v)+'</span><div class="meter"><i style="width:'+pr+'%"></i></div><p class="sm mute">Você tem '+brl(pat())+' no total, '+Math.round(pr)+'% do preço.</p>'+
+ (pode?'<button class="btn w" data-a="comprar">Comprar o objetivo</button>':'')+'</aside>';
+ h+='<aside class="pn" style="margin-top:1rem"><span class="lb">Manual</span><p class="sm mute" style="margin:.2rem 0 .5rem">'+S.vistos.length+' conceitos já apareceram. Toque para rever.</p><div class="mlist">'+S.vistos.map(i=>'<button class="chipb" data-a="termo" data-k="'+i+'">'+GLOSS[i].t+'</button>').join('')+'</div><p style="margin:.8rem 0 0"><button class="chipb" data-a="regras">ⓘ Regras do jogo</button></p></aside>';
+ return '<div>'+h+'</div>';}
+function linha(){let h='<aside class="pn"><table class="tl"><tr><th>Mês</th><th>Decisão</th><th>Saúde</th><th>Patrimônio</th></tr>';
+ S.hist.forEach(x=>{h+='<tr><td class="m">'+x.m+'</td><td>'+x.t+(x.sorte?' <span class="'+(x.ok?'':'neg')+'">'+(x.ok?'✓':'✗')+'</span>':'')+'</td><td><span class="sc">'+x.s+'</span></td><td class="m">'+brl(x.p)+'</td></tr>';});
+ if(!S.fim){h+='<tr><td class="m">'+S.mes+'</td><td>Decisão em aberto</td><td><span class="sc q">?</span></td><td class="m">—</td></tr>';for(let i=1;i<=4;i++)h+='<tr><td class="m">'+(S.mes+i)+'</td><td class="mute">—</td><td class="mute">—</td><td class="mute">—</td></tr>';}
+ return h+'</table><p class="sm mute">Patrimônio é a soma de conta, reserva, CDB e ações no fechamento do mês, antes da renda seguinte.</p></aside>';}
+function centro(){const c=CARTAS[S.carta];
+ if(S.fase==='fim')return fim();
+ if(S.fase==='fech'){const f=S.fech;let h='<div class="carta"><div class="tx" style="text-align:center;border-bottom:1px solid var(--line);padding:1.6rem 1rem"><h2>Essa decisão já faz parte<br>da sua carreira</h2></div><div class="tx"><span class="lb a">Extrato do mês '+f.m+'</span><p class="sm mute">Tudo o que entrou e saiu do seu patrimônio.</p>';
+  f.L.forEach(l=>{h+=ln(l[0],l[1]);});
+  if(f.mv.length){h+='<p class="lb a" style="margin-top:1rem">Dinheiro que só mudou de lugar</p>';f.mv.forEach(l=>{h+=ln(l[0],l[1],1);});}
+  h+='<p class="lb a" style="margin-top:1rem">Como você termina o mês</p>'+ln('Conta',S.conta)+ln('Reserva, com saque imediato',S.reserva,1)+(S.cdb?ln('CDB, preso por '+(12-S.cdb.m)+' meses',S.cdb.v,1):'')+ln('Ações',S.acoes,1)+ln('<b>Patrimônio</b>',pat(),1);
+  h+='<p class="sm mute">O preço do objetivo subiu '+brl(f.sub)+' com a inflação e agora é de '+brl(S.obj.v)+'.</p>';
+  if(S.conta<0)h+='<p class="sm neg">A conta fechou negativa. Juros de 8% ao mês equivalem a 151,8% ao ano. Quitar o '+T('cheque','cheque especial')+' vem antes de qualquer investimento.</p>';
+  return h+'<p style="margin-top:1rem"><button class="btn w" data-a="proximo">'+(S.fim?'Ver o relatório da carreira':'Receber a renda e começar o mês '+(f.m+1))+'</button></p></div></div>';}
+ if(S.fase==='sobra'){const lz=Math.round(S.renda*.08),v=Math.max(0,S.conta-(S.lazer?lz:0));
+  const pk=(a,k,on,e,t,d)=>'<button class="pick" data-a="'+a+'" data-k="'+k+'" aria-pressed="'+on+'"><span style="font-size:1.6rem">'+e+'</span><span class="an">'+t+'</span><span class="sm mute">'+d+'</span></button>';
+  let h='<span class="lb a">Fim do mês '+S.mes+'</span><h2>O que fazer com o saldo</h2><p class="mute">Você tem '+brl(S.conta)+' na conta. Marque as 2 escolhas e depois feche o mês.</p><p class="lb" style="margin-top:1.2rem">1. Lazer deste mês</p>';
+  if(S.conta>=lz)h+='<div class="cards">'+pk('lz',0,!S.lazer,'🚫','Sem lazer','Não gasta nada. O bem-estar cai 10')+pk('lz',1,S.lazer,'🎬','Com lazer','Gasta '+brl(lz)+'. Bem-estar +18')+'</div>';
+  else h+='<p class="sm mute">O saldo não cobre o lazer de '+brl(lz)+' neste mês.</p>';
+  h+='<p class="lb">2. Destino '+(S.conta<0?'da conta':'dos '+brl(v)+' restantes')+'</p><div class="mlist" style="margin:.4rem 0">'+(S.lib.r?I('tesouro')+I('reserva'):'')+(S.lib.a?I('acao')+I('risco'):'')+'</div><div class="cards">';
+  if(S.conta<0&&S.acoes>0)h+=pk('dest','v',S.dest==='v','🧯','Vender as ações','Cobre a conta negativa e evita juros de 8% ao mês');
+  if(S.lib.r&&v>0)h+=pk('dest','r',S.dest==='r','🛡️','Reserva','Vai para o Tesouro Selic. Rende cerca de 0,85% ao mês e cobre imprevistos');
+  if(S.lib.a&&v>0)h+=pk('dest','a',S.dest==='a','📊','Ações','Pode render mais e pode cair. Não cobre imprevistos');
+  if(S.lib.a&&v>0)h+=pk('dest','m',S.dest==='m','⚖️','Meio a meio','Metade na reserva, metade em ações');
+  h+=pk('dest','c',S.dest==='c','🏧','Deixar na conta',S.conta<0?'Seguir com a conta negativa':'Fica disponível, mas não rende')+'</div>';
+  const nomes={v:'vender as ações',r:brl(v)+' para a reserva',a:brl(v)+' para ações',m:brl(v/2)+' para a reserva e '+brl(v/2)+' para ações',c:brl(v)+' ficam na conta'};
+  h+='<p class="sm">'+(S.dest?'Resumo. '+(S.lazer?brl(lz)+' de lazer e ':'Sem lazer e ')+nomes[S.dest]+'.':'Escolha um destino para liberar o fechamento.')+'</p><button class="btn w" data-a="fecharMes" '+(S.dest?'':'disabled')+'>Fechar o mês '+S.mes+'</button>';
+  return h+(S.lib.r?'':'<p class="sm mute">Novos destinos são liberados conforme a carreira avança.</p>');}
+ const g=GLOSS[c.termo];
+ let h='<div class="carta"><div class="cena" aria-hidden="true">'+c.e+'</div>';
+ if(S.fase==='res'){const r=S.res;h+='<div class="res '+(r.sorte&&!r.ok?'bad':'')+'"><span class="lb">Resultado da história</span><h3>'+r.r+(r.sorte?(r.ok?'. Deu certo':'. Deu errado'):'')+'</h3><p>'+r.txt+'</p><div class="chips">'+
+  r.d.map(d=>'<span class="chip">'+d[0]+' <b class="'+((d[1]>0)!==(d[0]==='Contas fixas')?'up':'dn')+'">'+(d[1]>0?'+ ':'− ')+(d[0]==='Bem-estar'||d[0]==='Saúde financeira'?Math.abs(d[1]):'R$ '+Math.abs(d[1]).toLocaleString('pt-BR'))+'</b></span>').join('')+(r.d.length?'':'<span class="chip">Nenhum valor mudou</span>')+
+  '</div><div class="conc"><span class="lb a">O que isso ensina</span><p>'+c.li+'</p></div><button class="btn w" data-a="seguir">Continuar</button></div></div>';return h;}
+ h+='<div class="tx"><span class="lb rod">Mês '+S.mes+'</span><span class="lb a">⚡ '+c.tag+'</span><p class="sm mute">Neste mês entraram '+brl(S.renda)+' de renda e saíram '+brl(S.contas)+' de contas fixas.</p><h3>'+c.t+'</h3><p class="mute">'+c.x()+'</p>'+
+  '<div class="conc"><span class="lb a">'+(S.novoTermo?'Conceito novo':'Conceito da rodada')+'</span><p><b>'+g.t+'.</b> '+g.d+'</p>'+(S.novoTermo?'<p class="sm mute">Exemplo. '+g.e+'</p>':'')+(c.mais.length?'<p class="sm mute" style="margin-bottom:.3rem">Outros termos desta decisão. Toque para entender antes de escolher.</p><div class="mlist">'+c.mais.map(I).join('')+'</div>':'')+'</div><p class="lb">O que você faz</p></div>';
+ c.ops.forEach((o,i)=>{h+='<button class="op" data-a="decidir" data-k="'+i+'"><span class="t"><b>'+o.r+'</b></span></button>';});
+ return h+'</div>';}
+function fim(){const v=S.fim==='vitoria',s=score(),er=S.hist.filter(h=>!CARTAS[h.id].m.includes(h.i)),az=S.hist.filter(h=>h.sorte&&!h.ok&&CARTAS[h.id].m.includes(h.i));
+ let h='<div class="carta"><div class="tx" style="text-align:center;padding:2rem 1rem;border-bottom:1px solid var(--line)"><span class="lb a">Relatório da carreira</span><h1>'+(v?'Objetivo comprado':'Dívida fora de controle')+'</h1><p class="mute">'+(v?S.nome+' comprou '+S.obj.n.toLowerCase()+' em '+S.mes+' meses e encerra como '+nivel(s)+'.':'A conta fechou '+REF.max+' meses seguidos no vermelho. Com 8% ao mês, cada mês começa mais difícil que o anterior.')+'</p></div><div class="tx">'+
+ [['Meses jogados',S.mes],['Saúde financeira final',s+', '+nivel(s)],['Decisões recomendadas',(S.hist.length-er.length)+' de '+S.hist.length],['Juros pagos ao banco',brl(S.juros)],['Rendimento dos investimentos',brl(S.rend)],['Perdido em golpe',brl(S.golpe)],['Inflação no preço do objetivo',brl(S.obj.v-S.obj.v0)]].map(l=>ln(l[0],l[1],1)).join('');
+ h+='<p class="lb a" style="margin-top:1.2rem">O que você errou e o que deveria ter feito</p>';
+ if(!er.length)h+='<p>Nenhuma decisão fugiu do recomendado.</p>';
+ er.forEach(x=>{const c=CARTAS[x.id];h+='<div class="conc"><span class="lb">Mês '+x.m+'. '+c.t+'</span><p>Você escolheu <b>'+c.ops[x.i].r.toLowerCase()+'</b>.</p><p>O recomendado era <b>'+c.m.map(i=>c.ops[i].r.toLowerCase()).join('</b> ou <b>')+'</b>.</p><p class="sm mute">'+c.li+'</p></div>';});
+ if(az.length)h+='<p class="sm mute">Em '+az.length+(az.length===1?' mês':' meses')+' você decidiu bem e o resultado foi ruim mesmo assim ('+az.map(x=>'mês '+x.m).join(', ')+'). Boa decisão reduz o risco, mas não o elimina.</p>';
+ return h+'<div class="conc"><span class="lb a">Para levar para a vida real</span><p>A ordem que funciona é orçamento, reserva de emergência, renda fixa e só depois ações. Dívida cara se quita antes de investir. Retorno alto e garantido não existe.</p></div><button class="btn w" data-a="reset">Começar outra carreira</button></div></div>';}
+function criar(){return '<div class="pn" style="max-width:60rem;margin:0 auto"><span class="lb a">Simulador de carreira financeira</span><h1>Da primeira renda ao primeiro objetivo</h1><p class="mute" style="max-width:38rem">Cada mês traz uma decisão. Algumas dependem de sorte, como na vida, e você não verá as chances antes de escolher. Juros, impostos e inflação seguem as regras do Brasil. Feito para quem tem 16 anos ou mais.</p>'+
+ '<p class="lb" style="margin-top:1.5rem">Seu nome</p><input type="text" id="nome" maxlength="14" value="'+UI.nome+'" placeholder="Como te chamam" aria-label="Seu nome">'+
+ '<p class="lb" style="margin-top:1.5rem">Propostas de renda</p><div class="cards">'+PERFIS.map(p=>'<button class="pick" data-a="p" data-k="'+p.id+'" aria-pressed="'+(UI.p===p.id)+'"><span class="lb a">'+p.d+'</span><span class="an">'+p.nome+'</span><b>'+brl(p.renda)+' por mês</b><br><span class="sm mute">Contas fixas '+brl(p.contas)+'. Sobram '+brl(p.renda-p.contas)+'</span></button>').join('')+'</div>'+
+ '<p class="lb">Objetivo da carreira</p><div class="cards">'+OBJ.map(o=>'<button class="pick" data-a="o" data-k="'+o.id+'" aria-pressed="'+(UI.o===o.id)+'"><span class="lb a">'+o.d+'</span><span class="an">'+o.nome+'</span><b>'+brl(o.v)+'</b></button>').join('')+'</div>'+
+ '<p style="text-align:right"><button class="btn" data-a="comecar" '+(UI.p&&UI.o?'':'disabled')+'>Confirmar e começar</button></p><p class="sm mute">Jogo educativo. Nada aqui é recomendação de investimento. O progresso fica salvo apenas neste navegador.</p></div>';}
+function render(){if(!S){el('nav').innerHTML='';el('app').innerHTML=criar();return;}
+ el('nav').innerHTML='<button class="btn gh" data-a="reset">↻ Reiniciar</button>';
+ el('app').innerHTML='<div class="grid">'+ficha()+'<main class="pn">'+centro()+'</main>'+linha()+'</div>';}
+function pop(h){el('pop').innerHTML=h?'<div class="veu" data-a="fecharPop"><div class="pn" role="dialog" aria-modal="true">'+h+'<p><button class="btn w" data-a="fecharPop" data-k="b">Fechar</button></p></div></div>':'';}
+function agir(a,k,alvo){switch(a){
+ case 'p':UI.nome=el('nome').value;UI.p=k;break;case 'o':UI.nome=el('nome').value;UI.o=k;break;
+ case 'comecar':novo(el('nome').value.trim(),UI.p,UI.o);break;
+ case 'decidir':decidir(+k);break;case 'seguir':S.fase='sobra';break;case 'lz':S.lazer=k==='1';break;case 'dest':S.dest=k;break;
+ case 'fecharMes':if(!S.dest)return;fecharMes();window.scrollTo(0,0);break;case 'proximo':proximo();window.scrollTo(0,0);break;case 'comprar':comprar();break;
+ case 'reset':if(S&&!S.fim&&UI.conf!==1){UI.conf=1;pop('<h2>Reiniciar a carreira</h2><p>O progresso atual será apagado.</p><p><button class="btn gh" data-a="reset">Apagar e reiniciar</button></p>');return;}S=null;UI.conf=0;pop('');try{localStorage.removeItem(K);}catch(e){}break;
+ case 'termo':{ver([k]);const g=GLOSS[k];pop('<span class="lb a">Manual</span><h2>'+g.t+'</h2><p>'+g.d+'</p><div class="conc"><span class="lb a">Exemplo</span><p>'+g.e+'</p></div>');salvar();return;}
+ case 'saude':{const s=score();pop('<span class="lb a">Saúde financeira</span><h2>Nota '+s+', '+nivel(s)+'</h2><p class="mute">É a nota da sua situação financeira, de 30 a 99. Ela sobe com reserva, investimento feito na ordem certa, bem-estar e conhecimento, e cai com dívida.</p>'+comp().map(c=>'<div class="ln"><span>'+c[0]+'<br><span class="mute" style="font-family:\'Inter Tight\',sans-serif">'+c[2]+'</span></span><b class="'+(c[1]<0?'neg':'')+'">'+(c[1]<0?'− ':'+ ')+Math.abs(c[1]).toFixed(1).replace('.',',')+'</b></div>').join('')+'<p class="sm mute">Patamares. '+NIVEIS.slice().reverse().map(n=>n[1]+' a partir de '+Math.max(30,n[0])).join(', ')+'.</p>');return;}
+ case 'regras':pop('<span class="lb a">Manual</span><h2>Regras do jogo</h2><p>No início de cada mês a renda entra e as contas fixas saem. Depois vem 1 decisão e, por fim, o destino do saldo.</p><p>A reserva cobre automaticamente a conta quando falta dinheiro. Ações e CDB não cobrem.</p><p>Conta negativa paga 8% de juros ao mês. Você perde se ela fechar '+REF.max+' meses seguidos no vermelho e vence ao comprar o objetivo com o dinheiro da conta, da reserva e das ações.</p>');return;
+ case 'fecharPop':if(alvo.closest('.pn')&&k!=='b')return;UI.conf=0;pop('');return;}
+ if(a!=='reset')UI.conf=0;if(S)salvar();render();}
+if(typeof document!=='undefined'){document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b||b.disabled)return;agir(b.dataset.a,b.dataset.k,e.target);});
+ try{const s=JSON.parse(localStorage.getItem(K));if(s&&s.v===3)S=s;}catch(e){}render();}
+</script>
+</body>
+</html>
